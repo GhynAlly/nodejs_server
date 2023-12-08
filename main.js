@@ -5,15 +5,17 @@ app.use(fileUpload());
 const port = 4000;
 
 var image_data
-
-var snapshot = false
+var dist
+var servo = false
 
 app.post('/upload', (req, res) => {
-    console.log("upload")
+    console.log("/upload")
     var read = req.files;
     image_data = read.media.data;
-    res.send()
-    snapshot = false
+    dist = read.dist.data;
+    console.log(read)
+    res.send(servo)
+    servo = false
 });
 
 app.get('/', (req, res) => {
@@ -21,7 +23,16 @@ app.get('/', (req, res) => {
     res.send(image_data);
 });
 
-
+app.post('/servo', (req, res) => {
+    console.log("/servo")
+    res.send(dist);
+    //servo = true;
+});
+app.post('/dist', (req, res) => {
+    console.log("/dist")
+    res.send(dist);
+    dist = req.text
+});
 
 
 
