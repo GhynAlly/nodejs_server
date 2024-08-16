@@ -8,6 +8,8 @@ var image_data
 var dist
 var servo = false
 
+
+
 app.post('/upload', (req, res) => {
     console.log("/upload")
     var read = req.files;
@@ -34,6 +36,14 @@ app.post('/dist', (req, res) => {
     dist = req.text
 });
 
+app.post('/location', (req, res) => {
+    console.log("location get")
+    
+    res.send("OK")
+    console.log(req.text)
+    console.log(req.body)
+    
+});
 
 
 app.listen(port, () => {
